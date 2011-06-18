@@ -1,8 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_cnt =7
 let g:netrw_dirhist_1='/home/jin/.vim/colors'
 let g:netrw_dirhist_2='/home/jin/Dropbox/work/java/KnockKnockClient'
 let g:netrw_dirhist_3='/home/jin/.vim'
 let g:netrw_dirhist_4='/home/jin/.vim/pyflakes-pathogen/ftplugin/python/pyflakes'
 let g:netrw_dirhist_5='/home/jin/.vim'
 let g:netrw_dirhist_6='/home/jin/Codes'
+let g:netrw_dirhist_7='/home/jin/.vim'

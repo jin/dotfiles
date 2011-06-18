@@ -1,10 +1,14 @@
-filetype on
-filetype plugin indent on
+"" Use vim settings instead of vi settings
+set nocompatible
+
+"" Set filetype to on only after loading pathogen
+filetype off
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
-let mapleader = ","
-set backspace=indent,eol,start
+filetype plugin indent on
 
+"" Allow backspacing over everything in insert mode
+set backspace=indent,eol,start
 
 "" Set backup dirs
 set backup
@@ -12,10 +16,7 @@ set backupdir=~/Dropbox/work/vim/backup
 set directory=~/Dropbox/work/vim/tmp
 
 "" Clear all auto commands
-autocmd! 
-
-"" Don't have to be compatible with vi
-set nocompatible
+autocmd!
 
 "" Support all three newline formats
 set fileformats=unix,dos,mac
@@ -23,7 +24,8 @@ set fileformats=unix,dos,mac
 "" No viminfo files
 set viminfo=
 
-
+"" More undo!
+set undolevels=1000
 
 """"""""
 """UI"""
@@ -32,10 +34,10 @@ syntax on
 set background=dark
 set title
 set linebreak
-set nolist 
+set nolist
 set showmatch
 
-"" Set command line height explicitly 
+"" Set command line height explicitly
 set cmdheight=1
 
 "" Show partial command in status line
@@ -62,20 +64,12 @@ set wrap
 
 "" Pyflakes uses SpellBad to highlight.
 hi clear SpellBad
-hi SpellBad term=standout ctermfg=1 term=underline cterm=underline
+"hi SpellBad term=standout ctermfg=1 term=underline cterm=underline
+hi SpellBad cterm=underline term=underline
 
 "" Highlight lines longer than 80 columns
 hi OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%81v.\+/
-
-"" Quicker window switching
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-
-"" Split windows specified explicitly
-nnoremap <C-w>s :sp<cr>
 
 
 """"""""""""""""""""""""
@@ -101,26 +95,66 @@ map <leader><space> :noh<cr>
 """Tabulation and indentation"""
 """"""""""""""""""""""""""""""""
 set autoindent                  " set the cursor at same indent as line above
+
+"" Set tab to 4 spaces
 set tabstop=4
+
 set expandtab
 set smarttab
+
+"" When hitting <BS>, act as though a tab is removed
 set softtabstop=4
+
+"" 4 spaces for autoindents
 set shiftwidth=4
+
 "set preserveindent              " save as much indent structure as possible
-""set smartindent                 " try to be smart about indenting (C-style)
+"set smartindent                 " try to be smart about indenting (C-style)
+
+"" Code folding
+set foldmethod=indent
+set foldlevel=99
+
+"" Python Tab Completion and Documentation
+au FileType python set omnifunc=pythoncomplete#Complete
+let g:SuperTabDefaultCompletionType = "context"
+set completeopt=menuone,longest,preview
+
+""""""""""""""""""""
+"""Keymappings :D"""
+""""""""""""""""""""
+"" Set <leader> to ','
+let mapleader = ","
 
 "" Maintain selection after indentation
 vmap > >gv
 vmap < <gv
 
-"-- Code Folding --"
-set foldmethod=indent
-set foldlevel=99
+"" Quicker window switching
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
-"-- Python Tab Completion and Documentation --"
-au FileType python set omnifunc=pythoncomplete#Complete
-let g:SuperTabDefaultCompletionType = "context"
-set completeopt=menuone,longest,preview
+"" Split windows specified explicitly
+nnoremap <C-w>s :sp<cr>
 
-"-- Key mappings --"
-"let g:pep8_map='<leader>8'       " PEP8 quickfix?
+"" Set ':' to ';'
+nnoremap ; :
+
+"" 'j' and 'k' as they should be
+nnoremap j gj
+nnoremap k gk
+
+"" Remove all trialing whitespaces from file
+nnoremap <leader>W :%s/\s\+$//<CR>:let @/=''<CR>
+
+"" Run python script
+nnoremap <F8> :!python %<CR>
+
+
+"""""""""""""""""""""
+"""Python specific"""
+"""""""""""""""""""""
+"" Enable pyflakes quickfix support
+let g:pyflakes_use_quickfix = 1
