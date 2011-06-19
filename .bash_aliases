@@ -1,6 +1,5 @@
 alias rm='rm -I'
-alias songbird='~/Songbird/songbird-bin &'
 alias rsyncmusic='rsync -avr /home/jin/Music/ /media/Home/Music/'
 alias hg-push-mysite='hg push ssh://hg@bitbucket.org/jin_/first-django-app'
-alias hg-push-euler='hg push ssh://hg@bitbucket.org/jin_/project-euler'
 alias v='vim'
+alias uu='sudo apt-get update && sudo apt-get -y upgrade'
