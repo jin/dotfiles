@@ -27,6 +27,7 @@ set viminfo=
 "" More undo!
 set undolevels=1000
 
+
 """"""""
 """UI"""
 """"""""
@@ -64,7 +65,6 @@ set wrap
 
 "" Pyflakes uses SpellBad to highlight.
 hi clear SpellBad
-"hi SpellBad term=standout ctermfg=1 term=underline cterm=underline
 hi SpellBad cterm=underline term=underline
 
 "" Highlight lines longer than 80 columns
@@ -87,14 +87,12 @@ set hlsearch
 "" Search while typing
 set incsearch
 
-"" Turn off highlighting after search
-map <leader><space> :noh<cr>
-
 
 """"""""""""""""""""""""""""""""
 """Tabulation and indentation"""
 """"""""""""""""""""""""""""""""
-set autoindent                  " set the cursor at same indent as line above
+"" set the cursor at same indent as line above
+set autoindent                  
 
 "" Set tab to 4 spaces
 set tabstop=4
@@ -107,9 +105,6 @@ set softtabstop=4
 
 "" 4 spaces for autoindents
 set shiftwidth=4
-
-"set preserveindent              " save as much indent structure as possible
-"set smartindent                 " try to be smart about indenting (C-style)
 
 "" Code folding
 set foldmethod=indent
@@ -152,9 +147,5 @@ nnoremap <leader>W :%s/\s\+$//<CR>:let @/=''<CR>
 "" Run python script
 nnoremap <F8> :!python %<CR>
 
-
-"""""""""""""""""""""
-"""Python specific"""
-"""""""""""""""""""""
-"" Enable pyflakes quickfix support
-let g:pyflakes_use_quickfix = 1
+"" Turn off highlighting after search
+map <leader><space> :noh<cr>
