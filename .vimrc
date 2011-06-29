@@ -149,3 +149,7 @@ nnoremap <F8> :!python %<CR>
 
 "" Turn off highlighting after search
 map <leader><space> :noh<cr>
+
+"" Moves cursor to the midscreen while going through search terms
+nnoremap N Nzz
+nnoremap n nzz
