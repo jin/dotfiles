@@ -148,8 +148,11 @@ nnoremap <leader>W :%s/\s\+$//<CR>:let @/=''<CR>
 nnoremap <F8> :!python %<CR>
 
 "" Turn off highlighting after search
-map <leader><space> :noh<cr>
+map <leader><space> :noh<CR>
 
 "" Moves cursor to the midscreen while going through search terms
 nnoremap N Nzz
 nnoremap n nzz
+
+"" Toggle NERDTree
+map <silent> <F7> :NERDTreeToggle<CR>
