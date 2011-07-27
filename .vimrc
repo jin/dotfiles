@@ -68,8 +68,8 @@ hi clear SpellBad
 hi SpellBad cterm=underline term=underline
 
 "" Highlight lines longer than 80 columns
-hi OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
+"hi OverLength ctermbg=red ctermfg=white guibg=#592929
+"match OverLength /\%81v.\+/
 
 
 """"""""""""""""""""""""
