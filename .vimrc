@@ -1,5 +1,11 @@
+"""""""""""
+"""Admin"""
+"""""""""""
 "" Use vim settings instead of vi settings
 set nocompatible
+
+"" Clear all auto commands
+autocmd!
 
 "" Set filetype to on only after loading pathogen
 filetype off
@@ -10,22 +16,21 @@ filetype plugin indent on
 "" Allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
-"" Set backup dirs
-set backup
-set backupdir=~/Dropbox/work/vim/backup
-set directory=~/Dropbox/work/vim/tmp
-
-"" Clear all auto commands
-autocmd!
-
-"" Support all three newline formats
-set fileformats=unix,dos,mac
+"" No backup files
+set nobackup
+"set noswapfile
 
 "" No viminfo files
 set viminfo=
 
+"" Support all three newline formats
+set fileformats=unix,dos,mac
+
 "" More undo!
 set undolevels=1000
+
+"" Hide buffers instead of closing them, open files w/o saving/undo changes 
+set hidden
 
 
 """"""""
@@ -35,7 +40,6 @@ syntax on
 set background=dark
 set title
 set linebreak
-set nolist
 set showmatch
 
 "" Set command line height explicitly
@@ -63,13 +67,9 @@ set scrolloff=5
 "" Soft wrap long lines
 set wrap
 
-"" Pyflakes uses SpellBad to highlight.
-hi clear SpellBad
-hi SpellBad cterm=underline term=underline
-
-"" Highlight lines longer than 80 columns
-"hi OverLength ctermbg=red ctermfg=white guibg=#592929
-"match OverLength /\%81v.\+/
+"" Highlight trailing whitespaces
+set list
+set listchars=tab:>.,trail:.,extends:#,nbsp:.
 
 
 """"""""""""""""""""""""
@@ -92,28 +92,30 @@ set incsearch
 """Tabulation and indentation"""
 """"""""""""""""""""""""""""""""
 "" set the cursor at same indent as line above
-set autoindent                  
+set autoindent
+
+"" Copy previous indentation on autoindenting
+set copyindent
+
+"" 4 spaces for autoindentation
+set shiftwidth=4
 
 "" Set tab to 4 spaces
 set tabstop=4
 
+"" Convert tab to spaces
 set expandtab
+
+"" Indent start of lines with shiftwidth, not tabstop
 set smarttab
 
 "" When hitting <BS>, act as though a tab is removed
 set softtabstop=4
 
-"" 4 spaces for autoindents
-set shiftwidth=4
-
 "" Code folding
 set foldmethod=indent
 set foldlevel=99
 
-"" Python Tab Completion and Documentation
-au FileType python set omnifunc=pythoncomplete#Complete
-let g:SuperTabDefaultCompletionType = "context"
-set completeopt=menuone,longest,preview
 
 """"""""""""""""""""
 """Keymappings :D"""
@@ -124,6 +126,10 @@ let mapleader = ","
 "" Maintain selection after indentation
 vmap > >gv
 vmap < <gv
+
+"" Moves cursor to the midscreen while going through search terms
+nnoremap N Nzz
+nnoremap n nzz
 
 "" Quicker window switching
 nnoremap <C-h> <C-w>h
@@ -141,18 +147,58 @@ nnoremap ; :
 nnoremap j gj
 nnoremap k gk
 
+"" No arrow keys for vimmers!
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+
 "" Remove all trialing whitespaces from file
 nnoremap <leader>W :%s/\s\+$//<CR>:let @/=''<CR>
-
-"" Run python script
-nnoremap <F8> :!python %<CR>
 
 "" Turn off highlighting after search
 map <leader><space> :noh<CR>
 
-"" Moves cursor to the midscreen while going through search terms
-nnoremap N Nzz
-nnoremap n nzz
+"" Execute script
+nnoremap <F8><F8> :!./%<CR>
 
+"" Toggle paste mode in insert mode, prevent vim from screwing up indentation
+set pastetoggle=<F2>
+
+"" Sudo write a file
+cmap w!! w !sudo tee % >/dev/null
+
+
+"""""""""""""""""""""
+"""MiniBufExplorer"""
+"""""""""""""""""""""
+"" Toggle MiniBufExplorer
+map <F6><F6> <leader>mbt<CR>
+
+"" Set max height of MBE window
+let g:miniBufExplMaxSize = 2
+
+"" Don't show buffer numbers
+let g:miniBufExplShowBufNumbers = 0
+
+
+""""""""""""""
+"""NERDTree"""
+""""""""""""""
 "" Toggle NERDTree
-map <silent> <F7> :NERDTreeToggle<CR>
+map <F7><F7> :NERDTreeToggle<CR>
+
+
+"""""""""""""""""""""""
+"""Language Specific"""
+"""""""""""""""""""""""
+
+"""" Python
+"" Python Tab Completion and Documentation
+au FileType python set omnifunc=pythoncomplete#Complete
+let g:SuperTabDefaultCompletionType = "context"
+set completeopt=menuone,longest,preview
+
+"" Pyflakes uses SpellBad to highlight.
+hi clear SpellBad
+hi SpellBad cterm=underline term=underline
