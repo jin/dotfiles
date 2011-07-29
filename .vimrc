@@ -71,6 +71,9 @@ set wrap
 set list
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
 
+"" ..but don't do that in html and xml files
+autocmd filetype html,xml set listchars-=tab:>.
+
 
 """"""""""""""""""""""""
 """Searching behavior"""
