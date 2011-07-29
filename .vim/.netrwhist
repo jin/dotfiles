@@ -1,7 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/home/jin/Dropbox/work/waspmote/linktest24_node'
-let g:netrw_dirhist_2='/home/jin/Codes/ep-rails/app/controllers'
-let g:netrw_dirhist_3='/home/jin/Codes/Django/ep/static/scripts'
-let g:netrw_dirhist_4='/home/jin/Codes/ep_railsserver/app/views'
-let g:netrw_dirhist_5='/home/jin/Codes/ep_railsserver/app/controllers'
