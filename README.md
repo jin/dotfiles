@@ -1,1 +1,4 @@
-README.md
+dotfiles
+========
+
+.vimrc, aliases, etc. Standard stuff. 
