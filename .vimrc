@@ -205,3 +205,8 @@ set completeopt=menuone,longest,preview
 "" Pyflakes uses SpellBad to highlight.
 hi clear SpellBad
 hi SpellBad cterm=underline term=underline
+
+
+"""" Ruby
+"" Set .mobile.erb extensions to html syntax
+autocmd BufNewFile,BufRead *.mobile.erb let b:eruby_subtype = 'html'
