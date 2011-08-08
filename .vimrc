@@ -42,6 +42,10 @@ set title
 set linebreak
 set showmatch
 
+"" Show cursorlines and columns
+set cursorline
+set cursorcolumn
+
 "" Set command line height explicitly
 set cmdheight=1
 
@@ -189,7 +193,7 @@ let g:miniBufExplShowBufNumbers = 0
 """NERDTree"""
 """"""""""""""
 "" Toggle NERDTree
-map <F7><F7> :NERDTreeToggle<CR>
+nnoremap <F7><F7> :NERDTreeToggle<CR>
 
 
 """""""""""""""""""""""
