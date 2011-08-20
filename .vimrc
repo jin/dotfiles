@@ -43,8 +43,8 @@ set linebreak
 set showmatch
 
 "" Show cursorlines and columns
-set cursorline
-set cursorcolumn
+"set cursorline
+"set cursorcolumn
 
 "" Set command line height explicitly
 set cmdheight=1
@@ -175,6 +175,10 @@ set pastetoggle=<F2>
 "" Sudo write a file
 cmap w!! w !sudo tee % >/dev/null
 
+"" Insert newline without entering insert mode
+map O O<Esc>
+map o o<Esc>
+
 
 """""""""""""""""""""
 """MiniBufExplorer"""
@@ -195,6 +199,10 @@ let g:miniBufExplShowBufNumbers = 0
 "" Toggle NERDTree
 nnoremap <F7><F7> :NERDTreeToggle<CR>
 
+"""""""""""""""""
+"""FuzzyFinder"""
+"""""""""""""""""
+nnoremap <leader>f :FufFile<CR>
 
 """""""""""""""""""""""
 """Language Specific"""
@@ -214,3 +222,7 @@ hi SpellBad cterm=underline term=underline
 """" Ruby
 "" Set .mobile.erb extensions to html syntax
 autocmd BufNewFile,BufRead *.mobile.erb let b:eruby_subtype = 'html'
+
+"""" SCSS
+""
+au BufRead,BufNewFile *.scss set filetype=scss
