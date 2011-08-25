@@ -9,8 +9,8 @@ autocmd!
 
 "" Set filetype to on only after loading pathogen
 filetype off
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+"call pathogen#runtime_append_all_bundles()
+"call pathogen#helptags()
 filetype plugin indent on
 
 "" Allow backspacing over everything in insert mode
@@ -29,8 +29,39 @@ set fileformats=unix,dos,mac
 "" More undo!
 set undolevels=1000
 
+"" Persistent undo
+set undofile
+set undodir=/tmp/
+
 "" Hide buffers instead of closing them, open files w/o saving/undo changes 
 set hidden
+
+"" Automatically cd into the directory the file is in
+"set autochdir
+
+
+""""""""""""
+"""Vundle"""
+""""""""""""
+"" Initialize
+set rtp+=~/.vim/bundle/vundle
+call vundle#rc()
+
+"" Required
+Bundle 'gmarik/vundle'
+
+"" Custom
+Bundle 'L9'
+Bundle 'FuzzyFinder'
+Bundle 'snipMate'
+Bundle 'comments.vim'
+Bundle 'delimitMate.vim'
+Bundle 'fugitive.vim'
+Bundle 'endwise.vim'
+
+Bundle 'rails.vim'
+Bundle 'ruby.vim'
+Bundle 'python.vim'
 
 
 """"""""
@@ -176,8 +207,8 @@ set pastetoggle=<F2>
 cmap w!! w !sudo tee % >/dev/null
 
 "" Insert newline without entering insert mode
-map O O<Esc>
-map o o<Esc>
+"map O O<Esc>
+map <Enter> o<Esc>
 
 
 """""""""""""""""""""
