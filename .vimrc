@@ -53,11 +53,15 @@ Bundle 'gmarik/vundle'
 "" Custom
 Bundle 'L9'
 Bundle 'FuzzyFinder'
+
+Bundle 'Command-T'
+
 Bundle 'snipMate'
 Bundle 'comments.vim'
 Bundle 'delimitMate.vim'
 Bundle 'fugitive.vim'
 Bundle 'endwise.vim'
+Bundle 'ragtag.vim'
 
 Bundle 'rails.vim'
 Bundle 'ruby.vim'
@@ -161,6 +165,9 @@ set foldlevel=99
 "" Set <leader> to ','
 let mapleader = ","
 
+"" Remap ESC
+imap kj <Esc>
+
 "" Maintain selection after indentation
 vmap > >gv
 vmap < <gv
@@ -210,6 +217,9 @@ cmap w!! w !sudo tee % >/dev/null
 "map O O<Esc>
 map <Enter> o<Esc>
 
+"" Go to next line from insert mode without disrupting current line
+imap <Enter> <Esc>o
+
 
 """""""""""""""""""""
 """MiniBufExplorer"""
@@ -234,6 +244,12 @@ nnoremap <F7><F7> :NERDTreeToggle<CR>
 """FuzzyFinder"""
 """""""""""""""""
 nnoremap <leader>f :FufFile<CR>
+
+"""""""""""""""
+"""Command-T"""
+"""""""""""""""
+nnoremap <leader>t :CommandT<CR>
+
 
 """""""""""""""""""""""
 """Language Specific"""
