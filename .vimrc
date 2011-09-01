@@ -39,6 +39,12 @@ set hidden
 "" Automatically cd into the directory the file is in
 "set autochdir
 
+"" MacVim default color scheme
+:colorscheme koehler
+
+"" MacVim default font and size
+:set guifont=Monaco:h12
+
 
 """"""""""""
 """Vundle"""
