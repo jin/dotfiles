@@ -1,113 +1,27 @@
-"""""""""""
-"""Admin"""
-"""""""""""
-"" Use vim settings instead of vi settings
-set nocompatible
+set nonumber
+set relativenumber
+set encoding=utf-8
+set mouse=a
 
-"" Clear all auto commands
-autocmd!
-
-"" Set filetype to on only after loading pathogen
-filetype off
-"call pathogen#runtime_append_all_bundles()
-"call pathogen#helptags()
-filetype plugin indent on
-
-"" Allow backspacing over everything in insert mode
-set backspace=indent,eol,start
-
-"" No backup files
 set nobackup
-"set noswapfile
+" no viminfo files
+set viminfo= 
+" set backupdir=~/.vim/backup
+" set directory=~/.vim/backup
 
-"" No viminfo files
-set viminfo=
+"" Whitespace stuff
+set nowrap
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set expandtab
+set smarttab "" Indent start of lines with shiftwidth, not tabstop
 
-"" Support all three newline formats
-set fileformats=unix,dos,mac
-
-"" More undo!
-set undolevels=1000
-
-"" Persistent undo
-set undofile
-set undodir=/tmp/
-
-"" Hide buffers instead of closing them, open files w/o saving/undo changes 
-set hidden
-
-"" Automatically cd into the directory the file is in
-"set autochdir
-
-"" MacVim default color scheme
-:colorscheme koehler
-
-"" MacVim default font and size
-:set guifont=Monaco:h12
-
-
-""""""""""""
-"""Vundle"""
-""""""""""""
-"" Initialize
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
-
-"" Required
-Bundle 'gmarik/vundle'
-
-"" Custom
-Bundle 'L9'
-Bundle 'FuzzyFinder'
-
-Bundle 'Command-T'
-
-Bundle 'snipMate'
-Bundle 'comments.vim'
-Bundle 'delimitMate.vim'
-Bundle 'fugitive.vim'
-Bundle 'endwise.vim'
-Bundle 'ragtag.vim'
-
-Bundle 'rails.vim'
-Bundle 'ruby.vim'
-Bundle 'python.vim'
-
-
-""""""""
-"""UI"""
-""""""""
-syntax on
-set background=dark
-set title
-set linebreak
-set showmatch
-
-"" Show cursorlines and columns
-"set cursorline
-"set cursorcolumn
-
-"" Set command line height explicitly
-set cmdheight=1
-
-"" Show partial command in status line
-set showcmd
-
-"" Show line numbers
-set number
-
-"" Show current position at bottom
-set ruler
-
-"" No error and visual bells
-set noerrorbells
-set visualbell t_vb=
-
-"" No redrawing while in macros
-set lazyredraw
-
-"" Keep at least 5 lines around cursor
-set scrolloff=5
+"" Searching stuff
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
 
 "" Soft wrap long lines
 set wrap
@@ -119,51 +33,25 @@ set listchars=tab:>.,trail:.,extends:#,nbsp:.
 "" ..but don't do that in html and xml files
 autocmd filetype html,xml set listchars-=tab:>.
 
+"" Python PEP8 style
+au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
 
-""""""""""""""""""""""""
-"""Searching behavior"""
-""""""""""""""""""""""""
-"" Set case insensitivity
-set ignorecase
+"" Use system clipboard
+set clipboard=unnamed
 
-"" Unless there's a capital letter
-set smartcase
+"" Persistent undo
+set undofile
+set undodir=/tmp/
 
-"" Highlight results
-set hlsearch
+"" MacVim default font and size
+set guifont=Monaco:h12
 
-"" Search while typing
-set incsearch
+"" No error and visual bells
+set noerrorbells
+set visualbell t_vb=
 
-
-""""""""""""""""""""""""""""""""
-"""Tabulation and indentation"""
-""""""""""""""""""""""""""""""""
-"" set the cursor at same indent as line above
-set autoindent
-
-"" Copy previous indentation on autoindenting
-set copyindent
-
-"" 4 spaces for autoindentation
-set shiftwidth=4
-
-"" Set tab to 4 spaces
-set tabstop=4
-
-"" Convert tab to spaces
-set expandtab
-
-"" Indent start of lines with shiftwidth, not tabstop
-set smarttab
-
-"" When hitting <BS>, act as though a tab is removed
-set softtabstop=4
-
-"" Code folding
-set foldmethod=indent
-set foldlevel=99
-
+"" Keep at least 5 lines around cursor
+set scrolloff=5
 
 """"""""""""""""""""
 """Keymappings :D"""
@@ -213,69 +101,70 @@ map <leader><space> :noh<CR>
 "" Execute script
 nnoremap <F8><F8> :!./%<CR>
 
-"" Toggle paste mode in insert mode, prevent vim from screwing up indentation
-set pastetoggle=<F2>
-
 "" Sudo write a file
 cmap w!! w !sudo tee % >/dev/null
 
-"" Insert newline without entering insert mode
-"map O O<Esc>
-map <Enter> o<Esc>
+"" Go to previous file
+map <Leader>p <C-^>
 
-"" Go to next line from insert mode without disrupting current line
-imap <Enter> <Esc>o
-
-
-"""""""""""""""""""""
-"""MiniBufExplorer"""
-"""""""""""""""""""""
-"" Toggle MiniBufExplorer
-map <F6><F6> <leader>mbt<CR>
-
-"" Set max height of MBE window
-let g:miniBufExplMaxSize = 2
-
-"" Don't show buffer numbers
-let g:miniBufExplShowBufNumbers = 0
+"" Yank whole file
+map yA :%y+<CR>
 
 
-""""""""""""""
-"""NERDTree"""
-""""""""""""""
-"" Toggle NERDTree
-nnoremap <F7><F7> :NERDTreeToggle<CR>
+"""""""""""""
+"""Plugins"""
+"""""""""""""
 
-"""""""""""""""""
-"""FuzzyFinder"""
-"""""""""""""""""
-nnoremap <leader>f :FufFile<CR>
-
-"""""""""""""""
-"""Command-T"""
-"""""""""""""""
-nnoremap <leader>t :CommandT<CR>
+"" open ctags bar
+nnoremap <silent> <Leader>b :TagbarToggle<CR>
 
 
-"""""""""""""""""""""""
-"""Language Specific"""
-"""""""""""""""""""""""
+"" Command-T
+let g:CommandTMaxHeight=5
 
-"""" Python
-"" Python Tab Completion and Documentation
-au FileType python set omnifunc=pythoncomplete#Complete
-let g:SuperTabDefaultCompletionType = "context"
-set completeopt=menuone,longest,preview
+"" NERDTree
+let g:NERDTreeWinSize = 20
 
-"" Pyflakes uses SpellBad to highlight.
-hi clear SpellBad
-hi SpellBad cterm=underline term=underline
+"" Tagbar
+let g:tagbar_width = 30
 
 
-"""" Ruby
-"" Set .mobile.erb extensions to html syntax
-autocmd BufNewFile,BufRead *.mobile.erb let b:eruby_subtype = 'html'
+"" vim-notes
+:let g:notes_directories = ['~/Dropbox/notes', '~/Documents/notes/']
 
-"""" SCSS
-""
-au BufRead,BufNewFile *.scss set filetype=scss
+""" NeoBundle stuff """
+if has('vim_starting')
+   set nocompatible               " Be iMproved
+   set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+
+call neobundle#rc(expand('~/.vim/bundle/'))
+
+" Let NeoBundle manage NeoBundle
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+NeoBundle 'Shougo/vimproc'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'git://git.wincent.com/command-t.git'
+NeoBundle 'Raimondi/delimitMate'
+NeoBundle 'tpope/vim-ragtag'
+NeoBundle 'vim-scripts/AutoComplPop'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle "MarcWeber/vim-addon-mw-utils"
+NeoBundle "tomtom/tlib_vim"
+NeoBundle "garbas/vim-snipmate"
+NeoBundle "honza/vim-snippets"
+NeoBundle "vim-scripts/Colour-Sampler-Pack"
+NeoBundle "haskell.vim"
+NeoBundle "tpope/vim-commentary"
+NeoBundle "majutsushi/tagbar"
+
+filetype plugin indent on
+syntax enable
+
+"" Default color scheme
+colorscheme gentooish 
+
+" Installation check.
+NeoBundleCheck
