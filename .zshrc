@@ -6,6 +6,7 @@ ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="ys"
+#ZSH_THEME="random"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -63,11 +64,19 @@ alias z='source ~/.zshrc && echo ".zshrc reloaded!"'
 alias vim='/usr/local/bin/vim'
 alias vi='/usr/local/bin/vim'
 
+alias start-ftp-server='twistd -n ftp --root ./'
+alias start-http-server='twistd -n web -p 8000 --path .'
+
+alias zshrc="vim ~/.zshrc"
+alias vimrc="vim ~/.vim/vimrc"
+
+alias update-brew="brew update --verbose && brew upgrade --verbose && brew doctor --verbose"
+
+set -o vi
+
+# for rvm
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" 
 
-# for leJOS (CS1101S)
-# export NXJ_HOME="/Users/jin/leJOS_NXJ_0.9.1beta-3"
-# export LEJOS_NXT_JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.7.0_40.jdk/Contents/Home"
-# # export LEJOS_NXT_JAVA_HOME="/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/"
-# export PATH="$NXJ_HOME/bin:$PATH"
+# for neovim
+export VIMRUNTIME=/usr/local/Cellar/vim/7.4.273/share/vim/vim74/
