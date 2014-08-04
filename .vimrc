@@ -1,6 +1,5 @@
 set nocompatible
-set nonumber
-set relativenumber
+set number relativenumber
 set encoding=utf-8
 set laststatus=2 "Needed for Powerline
 set mouse=a
@@ -94,10 +93,10 @@ nnoremap j gj
 nnoremap k gk
 
 "" No arrow keys for vimmers!
-map <up> <nop>
-map <down> <nop>
-map <left> <nop>
-map <right> <nop>
+" map <up> <nop>
+" map <down> <nop>
+" map <left> <nop>
+" map <right> <nop>
 
 "" Remove all trialing whitespaces from file
 nnoremap <leader>W :%s/\s\+$//<CR>:let @/=''<CR>
@@ -121,9 +120,6 @@ map yA :%y+<CR>
 """Plugins"""
 """""""""""""
 
-"" open ctags bar
-nnoremap <silent> <Leader>b :TagbarToggle<CR>
-
 "" Command-T
 let g:CommandTMaxHeight=5
 
@@ -139,6 +135,10 @@ let g:ctrlp_cmd = 'CtrlP'
 
 " Rails autocomplete
 let g:rubycomplete_rails = 1
+
+" Automatically enter
+" au VimEnter * Tagbar
+au VimEnter * NERDTree
 
 """ NeoBundle stuff """
 if has('vim_starting')
@@ -200,7 +200,8 @@ NeoBundle "tpope/vim-bundler"
 NeoBundle "vim-ruby/vim-ruby"
 
 " autocompletion
-NeoBundle "vim-scripts/AutoComplPop"
+" NeoBundle "vim-scripts/AutoComplPop"
+NeoBundle "ervandew/supertab"
 
 " for ruby
 NeoBundle "tpope/vim-endwise"
@@ -220,10 +221,23 @@ NeoBundle "rcyrus/snipmate-snippets-rubymotion"
 " rake
 NeoBundle "tpope/vim-rake"
 
+" Easy grepping
+NeoBundle "vim-scripts/EasyGrep"
+
+" Previewing markup files such as markdown, rdoc, html with <Leader>P
+NeoBundle "greyblake/vim-preview"
+
+" Making NERDTree and Tabs work together
+NeoBundle "jistr/vim-nerdtree-tabs"
+let g:nerdtree_tabs_open_on_console_startup=1
+
+" gruvbox colorscheme
+NeoBundle "morhetz/gruvbox"
+
 filetype plugin indent on
 syntax enable
 
-colorscheme darkburn 
+colorscheme oceandeep
 
 " Installation check.
 NeoBundleCheck
