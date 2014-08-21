@@ -172,9 +172,6 @@ NeoBundle 'scrooloose/nerdtree'
 " pretty themes
 NeoBundle "vim-scripts/Colour-Sampler-Pack"
 
-" syntax stuff for haskell
-NeoBundle "haskell.vim"
-
 " easy commenting with gc
 NeoBundle "tpope/vim-commentary"
 
@@ -201,7 +198,8 @@ NeoBundle "vim-ruby/vim-ruby"
 
 " autocompletion
 " NeoBundle "vim-scripts/AutoComplPop"
-NeoBundle "ervandew/supertab"
+" NeoBundle "ervandew/supertab"
+NeoBundle "Valloric/YouCompleteMe"
 
 " for ruby
 NeoBundle "tpope/vim-endwise"
@@ -231,13 +229,16 @@ NeoBundle "greyblake/vim-preview"
 NeoBundle "jistr/vim-nerdtree-tabs"
 let g:nerdtree_tabs_open_on_console_startup=1
 
+" Haskell syntax highlight
+NeoBundle "travitch/hasksyn"
+
 " gruvbox colorscheme
 NeoBundle "morhetz/gruvbox"
 
 filetype plugin indent on
 syntax enable
 
-colorscheme oceandeep
+colorscheme darkburn
 
 " Installation check.
 NeoBundleCheck
