@@ -1,3 +1,5 @@
+set runtimepath=~/.vim/doload/*,/usr/share/vim/vimfiles/,/usr/local/Cellar/vim/7.4.273/share/vim/vim74/,/usr/share/vim/vim73,/usr/share/vim/vimfiles/after
+
 set nocompatible
 set number relativenumber
 set encoding=utf-8
@@ -120,6 +122,9 @@ map yA :%y+<CR>
 """Plugins"""
 """""""""""""
 
+"" YCM
+let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+
 "" Command-T
 let g:CommandTMaxHeight=5
 
@@ -134,11 +139,11 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
 " Rails autocomplete
-let g:rubycomplete_rails = 1
+" let g:rubycomplete_rails = 1
 
 " Automatically enter
 " au VimEnter * Tagbar
-au VimEnter * NERDTree
+" au VimEnter * NERDTree
 
 """ NeoBundle stuff """
 if has('vim_starting')
@@ -227,13 +232,22 @@ NeoBundle "greyblake/vim-preview"
 
 " Making NERDTree and Tabs work together
 NeoBundle "jistr/vim-nerdtree-tabs"
-let g:nerdtree_tabs_open_on_console_startup=1
+" let g:nerdtree_tabs_open_on_console_startup=1
 
 " Haskell syntax highlight
 NeoBundle "travitch/hasksyn"
 
 " gruvbox colorscheme
 NeoBundle "morhetz/gruvbox"
+
+" emmet / HTML
+NeoBundle "mattn/emmet-vim"
+
+" for netrw
+NeoBundle "eiginn/netrw"
+
+" slim syntax highlighting
+NeoBundle "slim-template/vim-slim"
 
 filetype plugin indent on
 syntax enable
