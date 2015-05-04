@@ -21,7 +21,10 @@
      org
      syntax-checking
      extra-langs
-     flycheck
+     swift-mode
+     global-flycheck-mode
+     haskell
+     flymake-ruby
      )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
