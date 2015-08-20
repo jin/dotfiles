@@ -1,9 +1,136 @@
-set runtimepath=~/.vim/doload/*,/usr/share/vim/vimfiles/,/usr/local/Cellar/vim/7.4.273/share/vim/vim74/,/usr/share/vim/vim73,/usr/share/vim/vimfiles/after
+" NeoBundle
+" ---------------------------------------------
+
+if has('vim_starting')
+   set nocompatible               " Be iMproved
+   set runtimepath=~/.vim/doload/*,/usr/share/vim/vimfiles/,/usr/local/Cellar/vim/7.4.273/share/vim/vim74/,/usr/share/vim/vim73,/usr/share/vim/vimfiles/after,~/.vim/bundle/neobundle.vim/
+endif
+
+call neobundle#begin(expand('~/.vim/bundle/'))
+
+" Let NeoBundle manage NeoBundle
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+" Git wrapper, needed for powerline
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'Raimondi/delimitMate'
+NeoBundle 'tpope/vim-ragtag'
+
+" Runs code through external parser to check for syntatic errors
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'MarcWeber/vim-addon-mw-utils'
+NeoBundle 'tomtom/tlib_vim'
+
+NeoBundle 'garbas/vim-snipmate'
+NeoBundle 'honza/vim-snippets'
+
+" file browser
+NeoBundle 'scrooloose/nerdtree'
+
+" pretty themes
+NeoBundle "vim-scripts/Colour-Sampler-Pack"
+
+" easy commenting with gc
+NeoBundle "tpope/vim-commentary"
+
+" buffer to list tags
+NeoBundle "majutsushi/tagbar"
+
+" status bar
+NeoBundle "Lokaltog/vim-powerline"
+
+" syntax highlighting/indentation etc for Rust lang
+NeoBundle "wting/rust.vim"
+
+" fuzzy file finder
+NeoBundle "kien/ctrlp.vim"
+
+" for ruby on rails
+NeoBundle "tpope/vim-rails"
+
+" for bundler
+NeoBundle "tpope/vim-bundler"
+
+" for ruby handling and autocompletion
+NeoBundle "vim-ruby/vim-ruby"
+
+" autocompletion
+NeoBundle "Shougo/neocomplete.vim"
+
+" for ruby
+NeoBundle "tpope/vim-endwise"
+
+" for coffeescript
+NeoBundle "kchmck/vim-coffee-script"
+
+" " for javascript
+NeoBundle "jelera/vim-javascript-syntax", {'autoload': {'filetypes': ['javascript']}}
+
+" less syntax highlighting
+NeoBundle "genoma/vim-less"
+
+" for rubymotion
+NeoBundle "rcyrus/snipmate-snippets-rubymotion"
+
+" rake
+NeoBundle "tpope/vim-rake"
+
+" Easy grepping
+NeoBundle "vim-scripts/EasyGrep"
+
+" Previewing markup files such as markdown, rdoc, html with <Leader>P
+NeoBundle "greyblake/vim-preview"
+
+" Haskell syntax highlight
+NeoBundle "travitch/hasksyn"
+
+" gruvbox colorscheme
+NeoBundle "morhetz/gruvbox"
+
+" emmet / HTML
+NeoBundle "mattn/emmet-vim"
+
+" for netrw
+NeoBundle "eiginn/netrw"
+
+" slim syntax highlighting
+NeoBundle 'slim-template/vim-slim'
+
+" Pretty JSON
+NeoBundle "elzr/vim-json"
+
+" Exchange regions of words with cx
+NeoBundle "tommcdo/vim-exchange"
+
+" Inline Ruby evaluation
+NeoBundle 't9md/vim-ruby-xmpfilter'
+
+" Swift
+NeoBundle 'Keithbsmiley/swift.vim'
+
+" Readline keybindings
+NeoBundle 'tpope/vim-rsi'
+
+" align
+NeoBundle 'godlygeek/tabular'
+NeoBundle "junegunn/vim-easy-align"
+
+" colorscheme
+NeoBundle "trusktr/seti.vim"
+
+NeoBundle 'fatih/vim-go'
+
+NeoBundle "vim-scripts/brainfuck-syntax"
+
+" Installation check.
+NeoBundleCheck
+
+call neobundle#end()
 
 set nocompatible
 set number relativenumber
 set encoding=utf-8
-set laststatus=2 "Needed for Powerline
+set laststatus=2 " Needed for Powerline
 set mouse=a
 
 " Suppress default message at launch
@@ -173,140 +300,22 @@ let g:neocomplete#enable_at_startup = 1
 " let g:rubycomplete_rails = 1
 
 "" Disable delimiteMate for Rust source
-let delimitMate_excluded_ft = "rust"
+let delimitMate_excluded_ft = "rust,ml,ocaml"
 
 " Automatically enter
 " au VimEnter * Tagbar
 " au VimEnter * NERDTree
 
-""" NeoBundle stuff """
-if has('vim_starting')
-   set nocompatible               " Be iMproved
-   set runtimepath+=~/.vim/bundle/neobundle.vim/
-endif
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.idea/*,*/.DS_Store,*/vendor,*/node_modules/*
 
-call neobundle#rc(expand('~/.vim/bundle/'))
+let g:jsx_ext_required = 0
 
-" Let NeoBundle manage NeoBundle
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-" NeoBundle 'Shougo/vimproc'
-
-" Git wrapper, needed for powerline
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'Raimondi/delimitMate'
-NeoBundle 'tpope/vim-ragtag'
-
-" Runs code through external parser to check for syntatic errors
-NeoBundle 'scrooloose/syntastic'
-NeoBundle "MarcWeber/vim-addon-mw-utils"
-NeoBundle "tomtom/tlib_vim"
-
-NeoBundle "garbas/vim-snipmate"
-NeoBundle "honza/vim-snippets"
-
-" file browser
-NeoBundle 'scrooloose/nerdtree'
-
-" pretty themes
-NeoBundle "vim-scripts/Colour-Sampler-Pack"
-
-" easy commenting with gc
-NeoBundle "tpope/vim-commentary"
-
-" buffer to list tags
-NeoBundle "majutsushi/tagbar"
-
-" status bar
-NeoBundle "Lokaltog/vim-powerline"
-
-" syntax highlighting/indentation etc for Rust lang
-NeoBundle "wting/rust.vim"
-
-" fuzzy file finder
-NeoBundle "kien/ctrlp.vim"
-
-" for ruby on rails
-NeoBundle "tpope/vim-rails"
-
-" for bundler
-NeoBundle "tpope/vim-bundler"
-
-" for ruby handling and autocompletion
-NeoBundle "vim-ruby/vim-ruby"
-
-" autocompletion
-" NeoBundle "vim-scripts/AutoComplPop"
-" NeoBundle "ervandew/supertab"
-" NeoBundle "Valloric/YouCompleteMe"
-NeoBundle "Shougo/neocomplete.vim"
-
-" for ruby
-NeoBundle "tpope/vim-endwise"
-
-" for coffeescript
-NeoBundle "kchmck/vim-coffee-script"
-
-" for javascript
-NeoBundle "jelera/vim-javascript-syntax", {'autoload': {'filetypes': ['javascript']}}
-
-" less syntax highlighting
-NeoBundle "genoma/vim-less"
-
-" for rubymotion
-NeoBundle "rcyrus/snipmate-snippets-rubymotion"
-
-" rake
-NeoBundle "tpope/vim-rake"
-
-" Easy grepping
-NeoBundle "vim-scripts/EasyGrep"
-
-" Previewing markup files such as markdown, rdoc, html with <Leader>P
-NeoBundle "greyblake/vim-preview"
-
-" Making NERDTree and Tabs work together
-NeoBundle "jistr/vim-nerdtree-tabs"
-" let g:nerdtree_tabs_open_on_console_startup=1
-
-" Haskell syntax highlight
-NeoBundle "travitch/hasksyn"
-
-" gruvbox colorscheme
-NeoBundle "morhetz/gruvbox"
-
-" emmet / HTML
-NeoBundle "mattn/emmet-vim"
-
-" for netrw
-NeoBundle "eiginn/netrw"
-
-" slim syntax highlighting
-NeoBundle "slim-template/vim-slim"
-
-" Pretty JSON
-NeoBundle "elzr/vim-json"
-
-" Exchange regions of words with cx
-NeoBundle "tommcdo/vim-exchange"
-
-" Inline Ruby evaluation
-NeoBundle "t9md/vim-ruby-xmpfilter"
-
-" Swift
-NeoBundle "Keithbsmiley/swift.vim"
-
-" Readline keybindings
-NeoBundle "tpope/vim-rsi"
-
-" align
-NeoBundle "godlygeek/tabular"
-NeoBundle "junegunn/vim-easy-align"
+" Ocaml
+let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+execute "set rtp+=" . g:opamshare . "/merlin/vim"
+execute ":source " . "/Users/jin/.opam/system/share/vim/syntax/ocp-indent.vim"
 
 filetype plugin indent on
 syntax enable
 
-colorscheme atom-dark-256 
-
-" Installation check.
-NeoBundleCheck
+colorscheme seti
