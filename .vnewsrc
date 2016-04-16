@@ -1,0 +1,10 @@
+host: localhost 
+database: vnews 
+username: vnews 
+password: 
+
+Tech 
+http://daringfireball.net/index.xml
+https://marco.org/rss2
+https://www.macstories.net/feed/
+http://lambda-the-ultimate.org/rss.xml
