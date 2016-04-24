@@ -51,7 +51,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/Users/jin/.rvm/bin"
+export PATH="$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/Users/jin/.rvm/bin:/Library/Frameworks/Mono.framework/Commands"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -121,7 +121,7 @@ export IDEA_JDK='/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Hom
 export EDITOR='vim'
 
 # Docker stuff
-export DOCKER_HOST=tcp://192.168.59.104:2376
+export DOCKER_HOST=tcp://192.168.59.103:2376
 export DOCKER_CERT_PATH=/Users/jin/.boot2docker/certs/boot2docker-vm
 export DOCKER_TLS_VERIFY=1
 
@@ -130,11 +130,32 @@ eval `/usr/libexec/path_helper -s`
 # For autojump
 # [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
 
-fortune | cowsay | cowsay -n | cowsay -n
-
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 alias fucking='sudo'
-alias net='sudo ifconfig en1 down && sudo ifconfig en1 up'
 alias javac-3230='javac -nowarn -Xlint:-deprecation'
-alias socks='ssh -D 8080 root@ip'
 alias gendocs-mahjong='jazzy --min-acl private --github_url http://github.com/MahjongLeh/ -c -o docs --docset-icon assets/applogo.png'
+
+alias v='vim'
+
+alias ocaml='ledit ocaml'
+
+# Fuzzy finder
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export GOPATH=/Users/jin/Code/go
+
+# OPAM configuration
+. /Users/jin/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+alias ip="ipconfig getifaddr $(route -n get default|awk '/interface/ { print $2 }')
+"
+alias be="bundle exec"
+
+export NVM_DIR="/Users/jin/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+export VIMRUNTIME="/usr/local/Cellar/vim/7.4.1301/share/vim/vim74/"
+
+alias init-latex-homework='git clone git@github.com:jin/latex-homework-template'
+
+fortune | cowsay | cowsay -n | cowsay -n | lolcat
