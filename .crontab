@@ -1,0 +1,1 @@
+1 * * * * (bash -l -c 'rvm use 2.2.2 && vnews -U') > /dev/null 2>&1
