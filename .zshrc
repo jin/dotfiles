@@ -51,8 +51,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/Users/jin/.rvm/bin:/Library/Frameworks/Mono.framework/Commands"
-# export MANPATH="/usr/local/man:$MANPATH"
+export PATH="$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/Users/jin/.rvm/bins"
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
@@ -80,29 +79,6 @@ export LC_CTYPE=en_US.UTF-8
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias hello='nc -z' # Check if port on domain is open
-alias safari='open -a Safari' # open with Safari
-alias z='source ~/.zshrc'
-
-alias start-ftp-server='twistd -n ftp --root ./'
-alias start-http-server='twistd -n web -p 8000 --path .'
-
-alias zshrc="vim ~/.zshrc"
-alias vimrc="vim ~/.vim/vimrc"
-
-alias highlight-clipboard="pbpaste | highlight --syntax=rb -O rtf | pbcopy"
-
-alias update-brew="brew update --verbose && brew upgrade --verbose && brew doctor --verbose"
-
-alias send-to-kindle="mv ~/Dropbox/Papers/to\ convert/*_k2opt.pdf /Volumes/Kindle/documents/Papers/ && mv ~/Dropbox/Papers/to\ convert/*.pdf ~/Dropbox/Papers/converted/"
-
-alias motion="/Library/RubyMotion/bin/motion"
-alias sudo='sudo '
-
-alias ta='tmux attach -t'
-alias tn='tmux new -s'
-alias tl='tmux list-sessions'
-
 # For Homebrew $brew doctor
 for dir in \
       /usr/local/bin \
@@ -111,33 +87,15 @@ for dir in \
   if [[ -d $dir ]]; then path+=$dir; fi
 done
 
-# for neovim
-export VIMRUNTIME=/usr/local/Cellar/vim/7.4.273/share/vim/vim74/
-
 # ensure that IntelliJ runs properly
 export IDEA_JDK='/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home'
 
 # Default text editor
 export EDITOR='vim'
 
-# Docker stuff
-export DOCKER_HOST=tcp://192.168.59.103:2376
-export DOCKER_CERT_PATH=/Users/jin/.boot2docker/certs/boot2docker-vm
-export DOCKER_TLS_VERIFY=1
-
 eval `/usr/libexec/path_helper -s`
 
-# For autojump
-# [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
-
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-alias fucking='sudo'
-alias javac-3230='javac -nowarn -Xlint:-deprecation'
-alias gendocs-mahjong='jazzy --min-acl private --github_url http://github.com/MahjongLeh/ -c -o docs --docset-icon assets/applogo.png'
-
-alias v='vim'
-
-alias ocaml='ledit ocaml'
 
 # Fuzzy finder
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -147,15 +105,24 @@ export GOPATH=/Users/jin/Code/go
 # OPAM configuration
 . /Users/jin/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
-alias ip="ipconfig getifaddr $(route -n get default|awk '/interface/ { print $2 }')
-"
-alias be="bundle exec"
-
 export NVM_DIR="/Users/jin/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 export VIMRUNTIME="/usr/local/Cellar/vim/7.4.1301/share/vim/vim74/"
 
+alias hello='nc -z' # Check if port on domain is open
+alias safari='open -a Safari' # open with Safari
+alias z='source ~/.zshrc'
+alias start-ftp-server='twistd -n ftp --root ./'
+alias start-http-server='twistd -n web -p 8000 --path .'
+alias zshrc="vim ~/.zshrc"
+alias vimrc="vim ~/.vim/vimrc"
+alias highlight-clipboard="pbpaste | highlight --syntax=rb -O rtf | pbcopy"
+alias update-brew="brew update --verbose && brew upgrade --verbose && brew doctor --verbose"
+alias sudo='sudo '
+alias v='vim'
+alias ocaml='ledit ocaml'
+alias ip="ipconfig getifaddr $(route -n get default|awk '/interface/ { print $2 }')"
 alias init-latex-homework='git clone git@github.com:jin/latex-homework-template'
 
 fortune | cowsay | cowsay -n | cowsay -n | lolcat
